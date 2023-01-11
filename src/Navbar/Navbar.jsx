@@ -1,8 +1,16 @@
 import React from 'react'
-import logo from '../assests/logo.png'
+import logo from '../assests/logo.jpg'
+
 
 
 const Navbar = () => {
+  
+
+
+
+
+
+
   return (
     <>
       <header className="bg-white">
@@ -17,7 +25,7 @@ const Navbar = () => {
             <li><a>Blog</a></li>
            </ul>
          </div>
-         <button className="flex flex-start rounded-lg border-slate-500 ring-1 ring-offset-2 px-8 py-1  mr-12  text-[12] ">Login</button>
+         <button className="flex flex-start rounded-lg border-slate-500 ring-1 ring-offset-2 px-8 py-1  mr-12  text-[12] " >Login</button>
         </nav>
    </header>
     </>

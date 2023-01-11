@@ -1,13 +1,18 @@
 import React from 'react'
-import {Routes,Route} from 'react-router-dom'
+import {Route,Router,Routes} from 'react-router-dom'
 import LandingPage from './LandingPage/LandingPage'
+
+import ProductPage from './ProductPage/ProductPage'
+import ProductDetails from './ProductDetails/ProductDetails'
 
 
 
 function App() {
   return (
     <Routes>
-       <Route path="/" element={<LandingPage/>} />
+       <Route exact path="/" element={<LandingPage/>} />
+       <Route path="/Product" element={<ProductPage/>} />
+       <Route path="/ProductDetails/:id" element={<ProductDetails/>} />
     </Routes>
   );
 }
