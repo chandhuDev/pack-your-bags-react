@@ -1,6 +1,6 @@
 import React from 'react'
 import { Navbar } from '../Navbar'
-
+import ProductItem from '../ProductItem/ProductItem'
 
 const ProductPage = () => {
 
@@ -13,14 +13,13 @@ const ProductPage = () => {
 
   return (
     <>
-      <Navbar />
-      <div className='mx-52 border-r-8 border-l-8 rounded-sm bordr-pink-900 h-screen '>
-         
-
-
-
-
+    
+    <Navbar />
+      <div className='mx-52   rounded-sm border-slate-900 h-screen mt-24 '>
+         <ProductItem />
       </div>
+    
+      
 
 
     </>

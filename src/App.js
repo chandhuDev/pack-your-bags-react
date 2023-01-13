@@ -11,8 +11,8 @@ function App() {
   return (
     <Routes>
        <Route exact path="/" element={<LandingPage/>} />
-       <Route path="/Product" element={<ProductPage/>} />
-       <Route path="/ProductDetails/:id" element={<ProductDetails/>} />
+       <Route path="/product" element={<ProductPage/>} />
+       <Route path="/productDetails/:id" element={<ProductDetails/>} />
     </Routes>
   );
 }
