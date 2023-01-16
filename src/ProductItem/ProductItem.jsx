@@ -1,5 +1,5 @@
 import React from 'react'
-import { useQuery, gql } from '@apollo/client';
+import { useQuery, gql,useMutation } from '@apollo/client';
 
 const GET_PLACES = gql`
 
@@ -21,17 +21,37 @@ const GET_PLACES = gql`
 `;
 
 
+const UPDATE_PLACE=gql`
+   mutation updatePlace($id:ID!,$data:PlaceInput!){
+    updatePlace(id:$id,data:$data){
+    data{
+      id,
+      attributes{
+        seat
+      }
+    }
+    }
+    
+  }
+`
+
+
 const ProductItem = () => {
 
     const { loading, error, data } = useQuery(GET_PLACES);
-    
+    const [addTodo]=useMutation(UPDATE_PLACE)
     
 
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error : {error.message}</p>;
     
-   console.log(data)
+  // console.log(data)
+
+
+   function updateSeat(){
+    
+   }
 
 
     function getNumberOfDays(Day1,Day2){
@@ -61,7 +81,8 @@ const ProductItem = () => {
                     </div>
            </div>
            <div className='w-full h-1/3 border-b-2 flex flex-row items-center border-slate-700 '>
-               <h4 className='relative  left-20  text-lg'><span className='text-xl font-bold mr-2'>{place.attributes.seat}</span>Seats left</h4>
+               
+               <h4 className='relative  left-20  text-lg' onClick={updateSeat}><span className='text-xl font-bold mr-2'>{place.attributes.seat}</span>Seats left</h4>
                <h4 className='relative  left-80 text-xl'><span className='text-xl font-bold mr-3'>{place.attributes.cost}</span>Only to visit the glory Places</h4>
            </div>
            <div className='w-full justify-evenly   p-1  flex  items-center grow'>
