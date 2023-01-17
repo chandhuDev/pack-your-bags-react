@@ -1,5 +1,6 @@
 import React from 'react'
 import { useQuery, gql,useMutation } from '@apollo/client';
+import { useNavigate } from "react-router-dom";
 import productDetails from '../ProductDetails/ProductDetails'
 
 const GET_PLACES = gql`
@@ -7,14 +8,15 @@ const GET_PLACES = gql`
   query GetPlaces{
   places{
     data{
+      id,
       attributes{
-        id,
-       source,
-      destination,
-      cost,
-      seat,
-      startDate,
-      endDate,
+        
+       source
+      destination
+      cost
+      seat
+      startDate
+      endDate
        
     }
 }
@@ -27,9 +29,9 @@ const GET_PLACES = gql`
 
 
 const ProductItem = () => {
-
+    const navigate = useNavigate();
     const { loading, error, data } = useQuery(GET_PLACES);
-    const [addTodo]=useMutation(UPDATE_PLACE)
+    console.log(data)
     
 
 
@@ -54,8 +56,10 @@ const ProductItem = () => {
 
 
 
-    function getProductDetails(place){
-      return <productDetails  productValue={place}/>
+    function getProductDetails(id){
+      console.log("productdetails")
+      navigate(`/productDetails/${id}`)
+      // return <productDetails  placeId={id}/>
     }
 
   return (
@@ -64,7 +68,7 @@ const ProductItem = () => {
         return (
             
             <div className='mx-24 pt-8 mt-4  relative'>
-            <div onclick={getProductDetails(place)} className='w-full h-48 rounded-lg flex flex-col hover:bg-gradient-to-r border-2 border-slate-700 hover:from-slate-100 cursor-pointer hover:via-purple-100 hover:to-red-200'>
+            <div onClick={()=>getProductDetails(place.id)} className='w-full h-48 rounded-lg flex flex-col hover:bg-gradient-to-r border-2 border-slate-700 hover:from-slate-100 cursor-pointer hover:via-purple-100 hover:to-red-200'>
            <div className='w-full h-2/5 flex border-b-2 border-slate-700'>
                     <div className='flex-1 flex justify-center items-center border-r-2 border-slate-700'>
                         <h2 className='text-3xl'>{place.attributes.source}</h2>
