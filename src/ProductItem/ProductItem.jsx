@@ -1,5 +1,6 @@
 import React from 'react'
 import { useQuery, gql,useMutation } from '@apollo/client';
+import productDetails from '../ProductDetails/ProductDetails'
 
 const GET_PLACES = gql`
 
@@ -7,6 +8,7 @@ const GET_PLACES = gql`
   places{
     data{
       attributes{
+        id,
        source,
       destination,
       cost,
@@ -21,19 +23,7 @@ const GET_PLACES = gql`
 `;
 
 
-const UPDATE_PLACE=gql`
-   mutation updatePlace($id:ID!,$data:PlaceInput!){
-    updatePlace(id:$id,data:$data){
-    data{
-      id,
-      attributes{
-        seat
-      }
-    }
-    }
-    
-  }
-`
+
 
 
 const ProductItem = () => {
@@ -49,9 +39,7 @@ const ProductItem = () => {
   // console.log(data)
 
 
-   function updateSeat(){
-    
-   }
+   
 
 
     function getNumberOfDays(Day1,Day2){
@@ -65,13 +53,18 @@ const ProductItem = () => {
     
 
 
+
+    function getProductDetails(place){
+      return <productDetails  productValue={place}/>
+    }
+
   return (
     <>
     {data.places.data.map((place)=>{
         return (
             
             <div className='mx-24 pt-8 mt-4  relative'>
-            <div className='w-full h-48 rounded-lg flex flex-col hover:bg-gradient-to-r border-2 border-slate-700 hover:from-slate-100 cursor-pointer hover:via-purple-100 hover:to-red-200'>
+            <div onclick={getProductDetails(place)} className='w-full h-48 rounded-lg flex flex-col hover:bg-gradient-to-r border-2 border-slate-700 hover:from-slate-100 cursor-pointer hover:via-purple-100 hover:to-red-200'>
            <div className='w-full h-2/5 flex border-b-2 border-slate-700'>
                     <div className='flex-1 flex justify-center items-center border-r-2 border-slate-700'>
                         <h2 className='text-3xl'>{place.attributes.source}</h2>
@@ -82,7 +75,7 @@ const ProductItem = () => {
            </div>
            <div className='w-full h-1/3 border-b-2 flex flex-row items-center border-slate-700 '>
                
-               <h4 className='relative  left-20  text-lg' onClick={updateSeat}><span className='text-xl font-bold mr-2'>{place.attributes.seat}</span>Seats left</h4>
+               <h4 className='relative  left-20  text-lg'><span className='text-xl font-bold mr-2'>{place.attributes.seat}</span>Seats left</h4>
                <h4 className='relative  left-80 text-xl'><span className='text-xl font-bold mr-3'>{place.attributes.cost}</span>Only to visit the glory Places</h4>
            </div>
            <div className='w-full justify-evenly   p-1  flex  items-center grow'>
