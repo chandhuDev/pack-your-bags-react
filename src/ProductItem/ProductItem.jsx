@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useQuery, gql,useMutation } from '@apollo/client';
-import { useNavigate } from "react-router-dom";
-import productDetails from '../ProductDetails/ProductDetails'
+
+import Modal from '../Modal/Modal';
+import { useNavigate ,Link, useLocation} from 'react-router-dom';
+
 
 const GET_PLACES = gql`
 
@@ -29,16 +31,20 @@ const GET_PLACES = gql`
 
 
 const ProductItem = () => {
-    const navigate = useNavigate();
-    const { loading, error, data } = useQuery(GET_PLACES);
-    console.log(data)
-    
+   
 
+
+    const { loading, error, data } = useQuery(GET_PLACES);
+    
+    const location=useLocation()
+    
+    
+  
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error : {error.message}</p>;
     
-  // console.log(data)
+ 
 
 
    
@@ -53,23 +59,26 @@ const ProductItem = () => {
         return (Math.floor(diffInDays))
     }
     
-
-
-
-    function getProductDetails(id){
-      console.log("productdetails")
-      navigate(`/productDetails/${id}`)
-      // return <productDetails  placeId={id}/>
-    }
+ 
+ 
+  console.log("productpage",location)
+  
 
   return (
     <>
     {data.places.data.map((place)=>{
         return (
+          
+          <div className='mx-24 pt-8 mt-4  relative' key={place.id} >
             
-            <div className='mx-24 pt-8 mt-4  relative'>
-            <div onClick={()=>getProductDetails(place.id)} className='w-full h-48 rounded-lg flex flex-col hover:bg-gradient-to-r border-2 border-slate-700 hover:from-slate-100 cursor-pointer hover:via-purple-100 hover:to-red-200'>
-           <div className='w-full h-2/5 flex border-b-2 border-slate-700'>
+            <Link
+            to={{
+             pathname: `/productDetails/${place.id}`,
+              state:{background:location}
+            }}>
+
+            <div  className='w-full h-48 rounded-lg flex flex-col hover:bg-gradient-to-r border-2 border-slate-700 hover:from-slate-100 cursor-pointer hover:via-purple-100 hover:to-red-200'>
+             <div className='w-full h-2/5 flex border-b-2 border-slate-700'>
                     <div className='flex-1 flex justify-center items-center border-r-2 border-slate-700'>
                         <h2 className='text-3xl'>{place.attributes.source}</h2>
                     </div>
@@ -95,14 +104,18 @@ const ProductItem = () => {
          <div className='absolute w-20 h-20 bg-teal-200 top-1 flex justify-center items-center rounded-lg -left-14'>
            <p className='text-3xl font-bold'>{getNumberOfDays(place.attributes.startDate,place.attributes.endDate)}</p>
          </div>
+         </Link>
             </div>
+          
             
             
+            
+           
         )
     })}
     
     </>
-   )
+  )
 
 
 }
