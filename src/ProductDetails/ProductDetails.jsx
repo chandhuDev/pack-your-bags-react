@@ -32,11 +32,15 @@ const ProductDetails = () => {
   
   return (
     <>
-      <div className='bg-yellow-500 w-full h-72 text-lg font-medium flex flex-col justify-center items-center mx-auto my-auto px-4 py-3'>
-            <p>
-            Lorem ipsum dolor kkjkmsak ajsack sfoaks kasojcfofas jcz osjd ojzcs joockzock jodscs kjdszcds jzcsc jkcmksxc jckkxzcm, 
-            </p>
-            
+      <div className='h-screen w-full px-16 py-10 border-r-4 border-red-400 rounded-md'>
+          <div className='flex flex-row px-2 py-2 justify-center items-center'>
+             <Input />
+             <Input />
+          </div>
+          <div className='w-full h-max my-3 p-4 border-r-2 rounded-lg border-blue-800'>
+           <h4 className='font-serif text-right font-medium'></h4>
+          </div>
+          
       </div>
     </>
   )
