@@ -15,7 +15,7 @@ function App() {
   
  
  const backgroundState=location.state&&location.state.place
- console.log(backgroundState)
+ 
 
 
  
