@@ -61,7 +61,7 @@ const ProductItem = () => {
     
  
  
-  console.log("productpage",location)
+ 
   
 
   return (
@@ -72,10 +72,10 @@ const ProductItem = () => {
           <div className='mx-24 pt-8 mt-4  relative' key={place.id} >
             
             <Link
-            to={{
-             pathname: `/productDetails/${place.id}`,
-              state:{background:location}
-            }}>
+            to={`/productDetails/${place.id}`}
+            state={{place}}
+             
+            >
 
             <div  className='w-full h-48 rounded-lg flex flex-col hover:bg-gradient-to-r border-2 border-slate-700 hover:from-slate-100 cursor-pointer hover:via-purple-100 hover:to-red-200'>
              <div className='w-full h-2/5 flex border-b-2 border-slate-700'>

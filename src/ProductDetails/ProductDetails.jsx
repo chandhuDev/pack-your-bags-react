@@ -37,14 +37,25 @@ const images = [
 const ProductDetails = () => {
   const location=useLocation()
   
-  const background=location.state && location.state.background
+  
+  const stateData=location.state && location.state
+  
+ 
+  function getNumberOfDays(Day1,Day2){
+    let date1 = new Date(Day1);
+    let date2 = new Date(Day2);
+    let diffInMilliseconds = Math.abs(date2 - date1);
+    let diffInDays = diffInMilliseconds / (1000 * 3600 * 24)
+    
+    return (Math.floor(diffInDays))
+   }
   
    
-  console.log("PageDetails.js",location,background)
+ 
   
   return (
     <>
-      <div className='h-screen w-full px-16 py-10 border-r-4  rounded-md text-2xl'>
+      <div className='h-screen w-4/5 mx-auto  px-16 py-10 text-2xl'>
           <div className='flex flex-row px-2 py-2 justify-evenly mx-40 items-center bg-pink-300'>
              <h4 className=' font-serif text-center text-blue-900 py-6'>Enter your source</h4>
              <h4 className=' font-serif text-center text-blue-900 py-6'>Enter your destination</h4>
@@ -54,7 +65,7 @@ const ProductDetails = () => {
           </div>
           <div className='flex flex-row  mx-52 mt-7  items-center'>
             <div className='flex-1'>
-          <label className="block font-medium text-gray-700 mb-2 span" for="date">
+          <label className="block font-medium text-gray-700 mb-2 span" htmlFor="date">
           Start Date:
          </label>
           <input
@@ -65,7 +76,7 @@ const ProductDetails = () => {
            />
            </div>
            <div className='flex-1'>
-          <label className="block font-medium text-gray-700 mb-2" for="date">
+          <label className="block font-medium text-gray-700 mb-2" htmlFor="date">
           End Date:
          </label>
           <input
@@ -85,7 +96,7 @@ const ProductDetails = () => {
           <h2 className='w-full px-4 py-4 font-bold text-3xl text-center '>Places </h2>
           
           <div className='w-full h-96 p-10 my-5 bg-red-100 '>
-             <AwesomeSlider className="w-full h-full overflow-hidden rounded-md"  infinite={true}>
+             <AwesomeSlider className="w-full h-full overflow-hidden rounded-md"  infinite={true} Play={3000}>
              {images.map((image, index) => (
              <div key={index} className="w-full h-64">
               <img src={image} className="w-full h-64 object-cover rounded-md" alt="Slide" />
