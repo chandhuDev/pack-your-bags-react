@@ -7,9 +7,9 @@ const [value, setValue] = useState('');
 
   return (
     <>
-      <div className='w-full h-screen relative '>
-        <div className='w-full h-screen flex bg-black bg-opacity-10 z-50 absolute top-0 left-0 mx-auto justify-center items-center'>
-               <div className='h-auto w-3/6 flex flex-col rounded-lg border-2 items-center gap-y-5 text-2xl justify-center px-8 py-5 bg-slate-100'>
+      <div className='w-full h-full overflow-y-auto absolute top-0 left-0 flex justify-center items-center bg-black/30 ' >
+        
+               <div className='h-auto w-3/6 flex flex-col rounded-lg border-2  items-center gap-y-5 text-2xl justify-center px-8 py-5 bg-slate-100'>
                   <h5 className='block text-center'>Buy Tickets</h5>
                  <div className='my-8'> 
                     <label className="block text-gray-700 font-medium" htmlFor="inputText">
@@ -26,7 +26,7 @@ const [value, setValue] = useState('');
                   </div>
                   <button className='flex items-center px-5 py-3 rounded-lg border-2 hover:bg-cyan-200 bg-gray-100'>Buy now</button>
                </div>
-        </div>
+        
       </div>
     </>
   )

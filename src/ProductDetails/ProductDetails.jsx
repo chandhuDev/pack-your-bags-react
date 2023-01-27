@@ -4,6 +4,7 @@ import { useQuery, gql,useMutation } from '@apollo/client';
 
 import {BsChevronCompactLeft,BsChevronCompactRight} from 'react-icons/bs'
 import { useState } from 'react';
+import ModalCart from '../ModalCart/ModalCart';
 
 
 
@@ -51,6 +52,7 @@ const GET_PLACE=gql`
 const ProductDetails = () => {
   const {id}=useParams()
   const [index,setIndex]=useState(0)
+  const [openModal,SetOpenModal]=useState(false)
   const navigate=useNavigate()
 
   const { loading, error, data } =useQuery(GET_PLACE, { variables: { id } });
@@ -100,10 +102,7 @@ function getNumberOfDays(Day1,Day2){
  }
 
 
- function navigateToCart(){
-  
-   navigate('/modalCart')
- }
+
 
 
 
@@ -118,11 +117,13 @@ function getNumberOfDays(Day1,Day2){
   
   return (
     <>
-    <div className='absolute top-0 left-0 w-full h-screen bg-black z-50 bg-transparent bg-opacity-10'>
-
+    <div className='w-full h-full mt-64 flex justify-center items-center '>
+    {
+            openModal && <ModalCart/>
+    }     
     
-      <div className='h-screen w-4/5 mx-auto  px-16 py-10 text-2xl'>
-          <div className='flex flex-row px-2 py-2 justify-evenly mx-40 my-10 items-center bg-pink-300'>
+      <div className='h-screen w-4/5 mx-auto  px-16 py-10 text-2xl bg-white '>
+          <div className='flex flex-row px-2 py-2 justify-evenly mx-40 my-10 items-center bg-pink-100'>
              <h4 className=' font-serif text-center text-blue-900 py-6'>Source : {source}</h4>
              <h4 className=' font-serif text-center text-blue-900 py-6'>Destination : {destination}</h4>
           </div>
@@ -158,14 +159,15 @@ function getNumberOfDays(Day1,Day2){
            <h4>{getNumberOfDays(startDate,endDate)} days trip</h4>
            
           </div>
-          <h2 className='w-full px-4 py-4 font-bold text-3xl my-5 text-center '>Places </h2>
+          <div className='flex items-center justify-center'>
+          <button className='px-4  py-2 mb-5 text-center rounded-md border-2 bg-white hover:bg-blue-500' onClick={()=>SetOpenModal(!openModal)}>Purchase</button>
+          </div>
           
-         
-
-
-          <div className=' p-10 my-5  relative cursor-pointer'>
+          <div className='w-full h-max px-5 py-5 bg-white'>
+            <h5 className='font-bold text-5xl text-center'>Places</h5>
+            <div className=' p-10 my-5  relative cursor-pointer '>
             
-                <div className=' rounded-xl  bg-gray-100 group relative overflow-hidden duration-500' >
+                <div className=' rounded-xl   group relative overflow-hidden duration-500' >
                    <div
                    style={{backgroundImage:`url(${ImageArray[index].url})`}} 
                    className='w-full h-128 rounded-2xl  bg-cover bg-center '>
@@ -197,8 +199,6 @@ function getNumberOfDays(Day1,Day2){
             
 
           </div>
-          <div className='flex items-center justify-center'>
-          <button className='px-4 py-2 my-20  text-center rounded-md border-2 bg-gray-100 hover:bg-blue-500' onClick={navigateToCart}>Purchase</button>
           </div>
           
       </div>

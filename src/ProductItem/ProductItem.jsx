@@ -69,7 +69,7 @@ const ProductItem = () => {
     {data.places.data.map((place)=>{
         return (
           
-          <div className='mx-24 pt-8 mt-4 -z-10 relative' key={place.id} >
+          <div className='mx-24 pt-8 mt-4  relative' key={place.id} >
             
             <Link
             to={`/productDetails/${place.id}`}
@@ -83,7 +83,7 @@ const ProductItem = () => {
                         <h2 className='text-3xl'>{place.attributes.source}</h2>
                     </div>
                     <div className='flex-1 flex justify-center items-center '>
-                    <h2 className='text-3xl'>{place.attributes.destination}</h2>
+                    <h2 className='text-3xl'>{place.attributes.Destination}</h2>
                     </div>
            </div>
            <div className='w-full h-1/3 border-b-2 flex flex-row items-center border-slate-700 '>
