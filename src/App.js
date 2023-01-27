@@ -3,7 +3,7 @@ import {Route,Routes,useLocation,useParams} from 'react-router-dom'
 import LandingPage from './LandingPage/LandingPage'
 
 import ProductPage from './ProductPage/ProductPage'
-import ProductDetails from './ProductDetails/ProductDetails'
+import ModalCart from './ModalCart/ModalCart'
 import Modal from './Modal/Modal'
 
 
@@ -26,6 +26,7 @@ function App() {
        <Route exact path="/" element={<LandingPage/>} />
        <Route path="/product" element={<ProductPage/>} />
        {backgroundState && <Route exact path="/productDetails/:id" element={<Modal/>} /> }
+       <Route path='/modalCart' element={<ModalCart />} />
     </Routes>
     </>
   );

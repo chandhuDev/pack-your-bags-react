@@ -14,7 +14,7 @@ const GET_PLACES = gql`
       attributes{
         
        source
-      destination
+      Destination
       cost
       seat
       startDate
@@ -69,7 +69,7 @@ const ProductItem = () => {
     {data.places.data.map((place)=>{
         return (
           
-          <div className='mx-24 pt-8 mt-4  relative' key={place.id} >
+          <div className='mx-24 pt-8 mt-4 -z-10 relative' key={place.id} >
             
             <Link
             to={`/productDetails/${place.id}`}
