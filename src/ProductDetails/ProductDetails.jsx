@@ -13,8 +13,8 @@ import ModalCart from '../ModalCart/ModalCart';
 
 const GET_PLACE=gql`
   query places($id:ID){
- place(id:$id){
-  data{
+   place(id:$id){
+    data{
     id
     attributes{
       seat
@@ -25,7 +25,6 @@ const GET_PLACE=gql`
       endDate
       images{
         data{
-          
           attributes{
             placeImage{
               data{
@@ -36,7 +35,6 @@ const GET_PLACE=gql`
             }
             placeTitle
             Description
-            
           }
         }
       }
@@ -53,7 +51,8 @@ const ProductDetails = () => {
   const {id}=useParams()
   const [index,setIndex]=useState(0)
   const [openModal,SetOpenModal]=useState(false)
-  const navigate=useNavigate()
+  
+ 
 
   const { loading, error, data } =useQuery(GET_PLACE, { variables: { id } });
   const sliderRef = useRef(null);
@@ -117,9 +116,9 @@ function getNumberOfDays(Day1,Day2){
   
   return (
     <>
-    <div className='w-full h-full mt-64 flex justify-center items-center '>
+    <div className='w-full h-full my-24 flex justify-center items-center '>
     {
-            openModal && <ModalCart/>
+            openModal && <ModalCart closeModal={SetOpenModal} productId={id}/>
     }     
     
       <div className='h-screen w-4/5 mx-auto  px-16 py-10 text-2xl bg-white '>
@@ -137,7 +136,8 @@ function getNumberOfDays(Day1,Day2){
             type="date"
               id="date"
              name="date"
-            className="bg-white focus:outline-none span focus:shadow-outline-blue border border-gray-300 rounded-md py-2 px-4 block w-full appearance-none leading-5"
+             value={startDate}
+            className="bg-white cursor-pointer focus:outline-none span focus:shadow-outline-blue border border-gray-300 rounded-md py-2 px-4 block w-full appearance-none leading-5"
            />
            </div>
            <div className='flex-1'>
@@ -147,20 +147,21 @@ function getNumberOfDays(Day1,Day2){
           <input
             type="date"
               id="date"
+              value={endDate}
              name="date"
-            className="bg-white focus:outline-none focus:shadow-outline-blue border border-gray-300 rounded-md py-2 px-4 block w-full appearance-none leading-5"
+            className="bg-white cursor-pointer focus:outline-none focus:shadow-outline-blue border border-gray-300 rounded-md py-2 px-4 block w-full appearance-none leading-5"
            />
            </div>
            
           </div>
-          <div className='w-full h-max my-28 py-5 mx-auto flex gap-x-4 items-start justify-evenly text-2xl font-bold text-center border-r-2 rounded-lg border-blue-800 bg-slate-700'>
+          <div className='w-full h-max my-20 py-5 mx-auto flex gap-x-4 shadow-lg items-start justify-evenly text-2xl font-bold text-center border-r-2 rounded-lg  '>
            <h4>Cost : {cost}</h4>
            <h5>hurry Up! {seat} seats left</h5>
            <h4>{getNumberOfDays(startDate,endDate)} days trip</h4>
            
           </div>
           <div className='flex items-center justify-center'>
-          <button className='px-4  py-2 mb-5 text-center rounded-md border-2 bg-white hover:bg-blue-500' onClick={()=>SetOpenModal(!openModal)}>Purchase</button>
+          <button className='px-4  py-2 mb-5 text-center rounded-md border-2 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 ' onClick={()=>SetOpenModal(!openModal)}>Purchase</button>
           </div>
           
           <div className='w-full h-max px-5 py-5 bg-white'>

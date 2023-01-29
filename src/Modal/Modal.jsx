@@ -4,10 +4,6 @@ import ProductDetails from '../ProductDetails/ProductDetails'
 
 
 const Modal = () => {
-
-    
-
-
   return (
     <>
       <Backdrop >
