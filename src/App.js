@@ -5,6 +5,7 @@ import LandingPage from './LandingPage/LandingPage'
 import ProductPage from './ProductPage/ProductPage'
 import ModalCart from './ModalCart/ModalCart'
 import Modal from './Modal/Modal'
+import Success from './Success/Success'
 
 
 
@@ -27,6 +28,7 @@ function App() {
        <Route path="/product" element={<ProductPage/>} />
        {backgroundState && <Route exact path="/productDetails/:id" element={<Modal/>} /> }
        <Route path='/modalCart' element={<ModalCart />} />
+       <Route path='/successPage' element={<Success />} />
     </Routes>
     </>
   );

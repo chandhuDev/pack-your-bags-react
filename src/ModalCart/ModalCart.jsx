@@ -16,7 +16,7 @@ const [trigger,setTrigger]=useState(false)
 
   return (
     <>
-      <div className='w-full h-screen z-10 overflow-y-auto absolute top-0 left-0 flex justify-center items-center bg-black/30 ' >
+      <div className='w-full h-screen z-20 overflow-y-auto absolute top-0 left-0 flex justify-center items-center bg-black/50 ' >
         
                <div className='h-auto w-3/6 flex flex-col rounded-lg border-2 relative items-center gap-y-5 text-2xl justify-center px-8 py-5 bg-slate-100'>
                   <h5 className='block text-center text-4xl font-semibold'>Buy Tickets</h5>

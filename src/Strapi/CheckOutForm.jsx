@@ -60,7 +60,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000/",
+        return_url: "http://localhost:3000/successPage",
       },
     });
 
@@ -83,13 +83,14 @@ export default function CheckoutForm() {
   }
 
   return (
+    
     <form id="payment-form" onSubmit={handleSubmit}>
       <LinkAuthenticationElement
         id="link-authentication-element"
         onChange={(e) => setEmail(e.target.value)}
       />
       <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
+      <button disabled={isLoading || !stripe || !elements} id="submit" className="buttonMain" >
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>
@@ -97,5 +98,6 @@ export default function CheckoutForm() {
       {/* Show any error or success messages */}
       {message && <div id="payment-message">{message}</div>}
     </form>
+    
   );
 }
