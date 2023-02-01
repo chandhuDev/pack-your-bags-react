@@ -6,6 +6,8 @@ import ProductPage from './ProductPage/ProductPage'
 import ModalCart from './ModalCart/ModalCart'
 import Modal from './Modal/Modal'
 import Success from './Success/Success'
+import SignUp from '../src/SignUp/SignUp'
+import Login from '../src/Login/Login'
 
 
 
@@ -29,6 +31,8 @@ function App() {
        {backgroundState && <Route exact path="/productDetails/:id" element={<Modal/>} /> }
        <Route path='/modalCart' element={<ModalCart />} />
        <Route path='/successPage' element={<Success />} />
+       <Route path='/sign-in' element={<Login />} />
+       <Route path='/sign-up' element={<SignUp />} />
     </Routes>
     </>
   );

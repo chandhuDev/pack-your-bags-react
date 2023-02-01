@@ -40,7 +40,7 @@ export default function Strapi({id,seats}) {
     <div className="App">
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm id={id} seats={seats}/>
         </Elements>
       )}
     </div>

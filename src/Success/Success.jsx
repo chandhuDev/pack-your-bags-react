@@ -3,7 +3,13 @@ import  './success.css'
 import { useSpring, animated } from 'react-spring';
 import { useInView } from 'react-intersection-observer';
 
+
+
+
+
+
 const Success = () => {
+
 
     const { ref: magicSectionRef, inView: magicSectionIsVisible } = useInView();
     const successMessageProps = useSpring({

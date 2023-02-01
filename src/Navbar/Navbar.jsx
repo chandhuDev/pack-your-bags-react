@@ -1,16 +1,15 @@
 import React from 'react'
 import logo from '../assests/logo.jpg'
-
+import {Link,  useNavigate} from 'react-router-dom'
 
 
 const Navbar = () => {
+  const navigate = useNavigate()
+
+  function handleChange(){
+    navigate('/sign-in')
+  }
   
-
-
-
-
-
-
   return (
     <>
       <header className="bg-white">
@@ -25,7 +24,7 @@ const Navbar = () => {
             <li><a>Blog</a></li>
            </ul>
          </div>
-         <button className="flex flex-start rounded-lg border-slate-500 ring-1 ring-offset-2 px-8 py-1  mr-12  text-[12] " >Login</button>
+         <button className="flex flex-start rounded-lg border-slate-500 ring-1 ring-offset-2 px-8 py-1  mr-12  text-[12] " onClick={handleChange} >Login</button>
         </nav>
    </header>
     </>
