@@ -7,18 +7,22 @@ import {
 } from "@stripe/react-stripe-js";
 import { gql, useMutation } from '@apollo/client';
 
-
-
-
-
-const UPDATE_SEATS = gql`
-  mutation places($id:ID,$seats:INTEGER) {
-    place(seats: $seats,id:$id) {
+const UPDATE_SEATS=gql`
+mutation($id:ID!,$data:PlaceInput!){
+  updatePlace(id:$id,data:$data){
+    data{
       id
-      seats
+      attributes{
+        seat
+      }
+    
+      }
     }
-  }
-`;
+  }`
+
+
+
+
 
 
 export default function CheckoutForm({id,seats}) {
@@ -50,7 +54,9 @@ export default function CheckoutForm({id,seats}) {
           updateSeats({
             variables: {
               id,
-              seats
+              data:{
+                seats
+              }
             },
           })
           break;
@@ -106,7 +112,7 @@ export default function CheckoutForm({id,seats}) {
 
   return (
     
-    <form id="payment-form" onSubmit={handleSubmit}>
+    <form id="payment-form"  onSubmit={handleSubmit}>
       <PaymentElement id="payment-element" options={paymentElementOptions} />
       <button disabled={isLoading || !stripe || !elements} id="submit" className="buttonMain" >
         <span id="button-text">

@@ -8,6 +8,7 @@ import Modal from './Modal/Modal'
 import Success from './Success/Success'
 import SignUp from '../src/SignUp/SignUp'
 import Login from '../src/Login/Login'
+import Strapi from './Strapi/Strapi'
 
 
 
@@ -33,6 +34,7 @@ function App() {
        <Route path='/successPage' element={<Success />} />
        <Route path='/sign-in' element={<Login />} />
        <Route path='/sign-up' element={<SignUp />} />
+       <Route path='/payment' element={<Strapi />} />
     </Routes>
     </>
   );

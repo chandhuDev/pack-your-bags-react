@@ -1,15 +1,23 @@
 import React, { useState } from 'react'
 import {ImCancelCircle} from 'react-icons/im'
 import Strapi from '../Strapi/Strapi';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const ModalCart = ({closeModal,productId}) => {
 const [value, setValue] = useState('');
 const [trigger,setTrigger]=useState(false)
+const navigate=useNavigate()
 
-
-
+function handlePayment(){
+ navigate('/payment',{
+  state:{
+    id:productId,
+    seats:value
+  }
+ })
+}
   
 
 
@@ -34,8 +42,8 @@ const [trigger,setTrigger]=useState(false)
                     id="inputText"
                   />
                   </div>
-                  <button className='flex items-center p-4 rounded-lg border-2 transition shadow-lg ease-in delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300' onClick={()=>{setTrigger(true)}}>Buy now</button>
-                  {trigger&&<Strapi id={productId} seats={value}/>}
+                  <button className='flex items-center p-4 rounded-lg border-2 transition shadow-lg ease-in delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300' onClick={()=>handlePayment}>Buy now</button>
+                  {/* {trigger&&<Strapi id={productId} seats={value}/>} */}
                   <div className='absolute top-5 right-5 cursor-pointer hover:scale-150 duration-200 transition ease-linear' onClick={()=>{closeModal(false)}}>
                          <ImCancelCircle className='w-8 h-8 '/>
                   </div>

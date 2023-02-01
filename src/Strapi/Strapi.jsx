@@ -12,7 +12,9 @@ import "./Strapi.css";
 // Sign in to see your own test API key embedded in code samples.
 const stripePromise = loadStripe('pk_test_51MVZhjSI2utUDiQBNLDEcihkiqvlCMFUV33v1wElwPWw12458FeO4Hvs1DnTAp0TuVzGGOdA4JhQdWMcDKDZdDsC00XfGcZWPz');
 
-export default function Strapi({id,seats}) {
+export default function Strapi({location}) {
+  const id=location&&location.state.id
+  const seats=location&&location.state.seats
   const [clientSecret, setClientSecret] = useState("");
   console.log("clientsecret",clientSecret)
 
