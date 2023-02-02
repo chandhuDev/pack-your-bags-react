@@ -15,13 +15,9 @@ const ProductPage = () => {
     <>
     
     <Navbar />
-      <div className='mx-52   rounded-sm border-slate-900 h-screen mt-24 '>
+      <div className='mx-12   rounded-sm border-slate-900  h-full mt-24 '>
          <ProductItem />
       </div>
-    
-      
-
-
     </>
   )
 }
