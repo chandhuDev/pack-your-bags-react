@@ -5,7 +5,7 @@ import travel5 from '../assests/travel5.png'
 const Product = () => {
   return (
     <>
-      <div className="bg-emerald-100 mt-32 flex flex-col items-center h-3/4">
+      <div className="bg-emerald-100 mt-60 flex flex-col items-center h-3/4">
         <h2 className="font-bold text-3xl mt-10">Our Products</h2>
         <div className="flex mt-10 ">
             <div className="flex-1 justify-center items-center flex m-3 flex-col py-3 rounded-md border-2 border-stone-50">

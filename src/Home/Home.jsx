@@ -11,7 +11,7 @@ import travel4 from '../assests/travel4.png'
 const Home = () => {
   return (
     <>
-    <div className="relative mt-44 flex ">
+    <div className="relative mt-52 flex ">
     <div className="flex  ml-6 flex-1 text-center justify-center flex-col">
         <h2 className="text-4xl  font-bold">Pack your bags</h2>
         <p className="text-2xl leading-loose mt-8 font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quis sint architecto maxime eveniet atque. Cum explicabo natus suscipit dolorem fuga accusantium repudiandae! Sint reiciendis ratione similique corporis nostrum, amet ullam dolorem cum repellendus consequuntur culpa consequatur. Hic nobis commodi deserunt quo molestias pariatur eos error itaque. Consequuntur, dignissimos quos!

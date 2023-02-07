@@ -1,7 +1,8 @@
 import React,{useState} from 'react'
 import InputFormat from '../InputFormat/InputFormat'
 import logo from '../assests/logo.jpg'
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
+import axios from 'axios';
 
 const SignUp = () => {
 
@@ -9,29 +10,52 @@ const SignUp = () => {
    const [password,setPassword]=useState('')
    const [firstName,setFirstName]=useState('')
    const [secondName,setSecondName]=useState('')
-   const [loading,isLoading]=useState(false)
+   const [userData,setUserData]=useState(null)
+   const navigate=useNavigate()
 
-   function handleSubmit(e){
-    e.preventDefault()
-    
+
+   function submitData(){
+    axios
+    .post('http://localhost:1337/api/auth/local/register', {
+      firstName:firstName ,
+      username:secondName,
+      email: email,
+      password: password,
+    })
+    .then(response => {
+      localStorage.setItem('JWT',response.data.jwt)
+      console.log('User profile', response.data.user);
+      console.log('User token', response.data.jwt);
+      setUserData(response.data.user)
+      navigate("/",{
+        state:{
+          user:userData,
+          
+        }
+      })
+    })
+    .catch(error => {
+      console.log('An error occurred:', error.response);
+      navigate("/sign-up")
+    });
    }
+
+  function handleSubmit(e){
+    e.preventDefault()
+    submitData()
+  }
 
 
   return (
     <>
-    
     <div className='w-full h-screen flex justify-center items-center'>
-    
-        <form className='w-96 h-128 p-4 border-2 rounded-md border-gray-300 flex flex-col shadow-lg cursor-pointer' onSubmit={handleSubmit}>
-
-        <img src={logo} alt='logo' width={50} height={50} className='rounded-full block mx-auto'/>
+     <form className='w-96 h-128 p-4 border-2 rounded-md border-gray-300 flex flex-col shadow-lg cursor-pointer' onSubmit={handleSubmit}>
+       <img src={logo} alt='logo' width={50} height={50} className='rounded-full block mx-auto'/>
         <div className='w-full h-14 gap-4 flex flex-row mt-4 mb-4'>
           <InputFormat type='text' label='First Name' value={firstName} onChange={(e)=>setFirstName(e.target.value)}/>
           <InputFormat type='text' label='Second Name' value={secondName} onChange={(e)=>setSecondName(e.target.value)}/>
-
         </div>
-        
-        <InputFormat 
+      <InputFormat 
       type='email' 
       label='Enter email' 
       value={email}
@@ -42,7 +66,7 @@ const SignUp = () => {
       <InputFormat 
       type='password' 
       label='Create password' 
-      value={email}
+      value={password}
       onChange={(e) => setPassword(e.target.value)}
       
       required />

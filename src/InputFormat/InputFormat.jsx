@@ -4,7 +4,8 @@ import React from 'react'
 
 const InputFormat = ({ type = 'text', label = '', ...props }) => {
 
-
+   
+   
 
   return (
     <>

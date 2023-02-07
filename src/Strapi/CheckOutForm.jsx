@@ -20,11 +20,6 @@ mutation($id:ID!,$data:PlaceInput!){
     }
   }`
 
-
-
-
-
-
 export default function CheckoutForm({id,seats}) {
   const stripe = useStripe();
   const elements = useElements();
@@ -111,10 +106,12 @@ export default function CheckoutForm({id,seats}) {
   }
 
   return (
+    <div className="w-full h-screen flex justify-center items-center">
+
     
-    <form id="payment-form"  onSubmit={handleSubmit}>
+    <form id="payment-form"  onSubmit={handleSubmit} className='w-3/5 h-auto px-10 py-5 flex flex-col gap-y-10'>
       <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button disabled={isLoading || !stripe || !elements} id="submit" className="buttonMain" >
+      <button disabled={isLoading || !stripe || !elements} id="submit" className="buttonMain transition shadow-lg ease-in delay-105 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300" >
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>
@@ -122,6 +119,6 @@ export default function CheckoutForm({id,seats}) {
       {/* Show any error or success messages */}
       {message && <div id="payment-message">{message}</div>}
     </form>
-    
+    </div>
   );
 }

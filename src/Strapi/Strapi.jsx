@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { useLocation } from 'react-router-dom';
+
 
 import CheckoutForm from "./CheckOutForm";
 import "./Strapi.css";
@@ -12,10 +14,12 @@ import "./Strapi.css";
 // Sign in to see your own test API key embedded in code samples.
 const stripePromise = loadStripe('pk_test_51MVZhjSI2utUDiQBNLDEcihkiqvlCMFUV33v1wElwPWw12458FeO4Hvs1DnTAp0TuVzGGOdA4JhQdWMcDKDZdDsC00XfGcZWPz');
 
-export default function Strapi({location}) {
-  const id=location&&location.state.id
-  const seats=location&&location.state.seats
+export default function Strapi() {
+  const location = useLocation();
+  const id=location.state&&location.state.id
+  const seats=location.state&&location.state.seats
   const [clientSecret, setClientSecret] = useState("");
+  console.log("id and seats",id,seats)
   console.log("clientsecret",clientSecret)
 
   useEffect(() => {

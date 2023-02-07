@@ -19,6 +19,7 @@ function App() {
   
  
  const backgroundState=location.state&&location.state.place
+ const userData=location.state&&location.state.user
  
 
 
