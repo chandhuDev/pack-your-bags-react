@@ -1,0 +1,38 @@
+.anime{
+    border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
+    transition:all 1s ease-in-out;
+    animation: morph 8s ease-in-out infinite;
+}
+
+.home-text{
+    font-size: 36px;
+    font-weight: 700;
+    
+}
+
+.special-class{
+    -webkit-background-clip: text;
+   -moz-background-clip: text;
+   background-clip: text;
+   color: transparent;
+}
+
+
+.span-class{
+    text-transform: none;
+    display: block;
+}
+
+
+@keyframes morph{
+    0% {
+         border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; 
+    }
+    
+    50% {
+        border-radius: 30% 60% 70% 40%/50% 60% 30% 60%;
+    }
+    100% {
+        border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; 
+    }
+}

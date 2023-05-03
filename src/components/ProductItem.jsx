@@ -1,7 +1,7 @@
 import React, {useContext } from 'react'
 import { Link} from 'react-router-dom';
 import { AppContext } from '../Utils/Images'
-import { ImageCorousel } from './index'
+import { ImageCorousel ,Spinner} from './index'
 
 
 const ProductItem = () => {
@@ -13,9 +13,10 @@ return (
     <>
     <div className='w-full h-auto my-20 p-14'>
     
-     { product?.map((product)=>{
+     { product ?
+     product?.map((product)=>{
         return (
-       <div className='w-full h-auto mx-auto p-10 relative' key={product.id} >
+       <div className='w-full h-auto mx-auto p-10 relative' key={product} >
             <Link
             to={`/productDetails/${product.id}`}
             state={{product}}
@@ -45,9 +46,9 @@ return (
           </div>
          </Link>
       </div>
-    
-  )
-    })}
+    )}) :
+    <Spinner message='We are loading the content for you just wait for couple of seconds' className='w-full h-full flex justify-center items-center'/>
+    }
     
    
     </div>

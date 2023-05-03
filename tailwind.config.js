@@ -11,6 +11,9 @@ module.exports = {
       colors: {
         'bg-black': '#000000',
       },
+      // fontFamily:{
+      //   'special': 'Inconsolata'
+      // }
     },
   },
   plugins: [],

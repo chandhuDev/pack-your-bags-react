@@ -5,9 +5,9 @@ import { useLocation } from 'react-router-dom';
 import {CheckOutForm} from "./index"
 import "../css/Strapi.css";
 
+const APIKEY=process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY
 
-
-const stripePromise = loadStripe('pk_test_51MVZhjSI2utUDiQBNLDEcihkiqvlCMFUV33v1wElwPWw12458FeO4Hvs1DnTAp0TuVzGGOdA4JhQdWMcDKDZdDsC00XfGcZWPz');
+const stripePromise = loadStripe(APIKEY)
 
 export default function Strapi() {
   const location = useLocation();

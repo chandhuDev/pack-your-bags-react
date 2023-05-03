@@ -1,34 +1,40 @@
 import React from 'react'
-import travel from '../assests/travel.png'
-import travel6 from '../assests/travel6.png'
-import travel3 from '../assests/travel3.png'
-import travel5 from '../assests/travel5.png'
-import travel4 from '../assests/travel4.png'
+import {useNavigate} from 'react-router-dom'
+import '../css/imageAnime.css'
+import images from '../Utils/Images'
+import backgroundImage from '../assests/background-text.jpg'
+
 
 const Home = () => {
-  return (
+   const navigate=useNavigate()
+
+
+   function moveToProduct(){
+    navigate("/product")
+   }
+
+return (
     <>
-    <div className="relative mt-52 flex flex-row justify-evenly">
-     <div className="flex  ml-6  text-center justify-center ">
-        <h2 className="text-4xl  font-bold">Pack your bags</h2>
+    <div className="flex flex-row justify-evenly w-full h-128 mt-20 ">
+     <div className="flex items-start pt-24 relative flex-col w-128  h-full overflow-hidden">
+        <p className='home-text block mx-auto mb-8'>More You see it</p>
+        <div className='w-full h-40 flex justify-center items-center bg-white'>
+           <p className='home-text px-1 py-2 special-class text-center uppercase' style={{backgroundImage:`url(${backgroundImage})`}}>Explore the beautiful world around <span className=' span-class'>you!</span></p>
+        </div>
         
+        <div className='absolute bottom-12 w-auto h-auto bg-black  rounded-md cursor-pointer ml-32 font-mono text-2xl font-semibold' >
+        <button className='py-3 px-4 bg-indigo-800 text-center rounded-md  hover:duration-300 transition ease-in-out hover:-translate-y-2 hover:-translate-x-2 hover:delay-150 hover:text-teal-100' onClick={moveToProduct}>View Products <span>{'->'}</span></button>
+        </div>
      </div>
-     <div className="flex relative">
-        {/* <div className="absolute top-1 left-60">
-            <img src={travel} alt="travel" className="img-btn hover:-translate-y-36 w-3/4  cursor-pointer duration-200 scroll-smooth"/>
-        </div>
-        <div className="absolute top-10 left-48">
-            <img src={travel6} alt="travel1" className="img-btn hover:-translate-y-36 cursor-pointer duration-200 scroll-smooth"/>
-        </div>
-        <div className="absolute top-20 left-36">  
-            <img src={travel3} alt="travel2" className="img-btn hover:-translate-y-36 cursor-pointer duration-200 scroll-smooth"/>
-        </div>
-        <div className="absolute top-28 left-24">
-            <img src={travel5} alt="travel3" className="img-btn hover:-translate-y-36 cursor-pointer duration-200 scroll-smooth"/>
-        </div>
-        <div className="absolute top-36 left-12">
-            <img src={travel4} alt="travel4" className="img-btn drop-shadow-2xl hover:-translate-y-36 cursor-pointer duration-200 scroll-smooth"/>
-        </div> */}
+     <div className="grow h-full relative ">
+      <div className='absolute top-1/4 left-80 z-10 h-3/5 w-2/6 bg-purple-400 rounded-full bg-cover border-2 border-indigo-500/75 transition anime' style={{backgroundImage:`url(${images[0]?.url})`}}>
+      </div>
+      <div className='absolute top-12 left-20 h-64 w-64 bg-yellow-400/40 rounded-full bg-cover border-2 border-indigo-500/75 anime' style={{backgroundImage:`url(${images[8]?.url})`}}>
+      </div>
+      <div className='absolute top-4 right-1  h-60 w-60 bg-green-400/70 rounded-full bg-cover border-2 border-indigo-500/75 anime' style={{backgroundImage:`url(${images[9]?.url})`}}>
+      </div>
+      <div className='absolute bottom-4 right-16  h-48 w-48 bg-gray-500/70 rounded-full bg-cover border-2 border-lime-300/75 anime' style={{backgroundImage:`url(${images[4]?.url})`}}>
+      </div>
      </div>
    </div>
     </>
@@ -36,3 +42,5 @@ const Home = () => {
 }
 
 export default Home
+
+

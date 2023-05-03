@@ -27,13 +27,13 @@ export default function CheckoutForm({id,seats,totalSeats}) {
     if (!clientSecret) {
       return;
     }
-
+   
     stripe.retrievePaymentIntent(clientSecret).then(async ({ paymentIntent }) => {
       switch (paymentIntent.status) {
         case "succeeded":
+          const result=await updatePlace(id,seats+totalSeats)
+          console.log(result)
           setMessage("Payment succeeded!");
-          updatePlace(id,seats+totalSeats)
-          
           break;
         case "processing":
           setMessage("Your payment is processing.");
@@ -60,8 +60,8 @@ export default function CheckoutForm({id,seats,totalSeats}) {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000/successPage",
+        // Make sure to change this to your payment completion page   
+        return_url: "https://localhost:3000/successPage",
       },
     });
 
