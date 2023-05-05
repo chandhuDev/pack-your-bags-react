@@ -24,6 +24,8 @@ import UttarPradesh from '../../src/assests/Varanasi.jpg'
 import Goa from '../../src/assests/Waterfalls-Dudhsagar.jpg'
 
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+export const Navigate=useNavigate
 export const AppContext = React.createContext(null)
 
 

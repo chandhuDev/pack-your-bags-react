@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react'
-import { Route, Routes, useLocation, } from 'react-router-dom'
-import {LandingPage,ProductPage,ModalCart,Modal,Success,SignUp,Login,Strapi} from './components/index'
+import { Route, Routes} from 'react-router-dom'
+import {LandingPage,ProductPage,ModalCart,Modal,Success,SignUp,Login,Cancel} from './components/index'
 import { AppContext } from './Utils/Images'
 import PostMutate from './Utils/PostMutate'
 
@@ -11,12 +11,11 @@ function App() {
     useEffect(()=>{
         async function getData(){
             const data=await PostMutate()
-            setProduct(data)
+           setProduct(data)
         }
         getData()
     },[])
-
- console.log("products",product)   
+   
 
 
 
@@ -28,10 +27,10 @@ function App() {
                     <Route path="/product" element={<ProductPage />} />
                     <Route path="/productDetails/:id" element={<Modal />} />
                     <Route path="/modalCart" element={<ModalCart />} />
-                    <Route path="/successPage" element={<Success />} />
+                    <Route path="/successPage/:id" element={<Success />} />
                     <Route path="/sign-in" element={<Login />} />
                     <Route path="/sign-up" element={<SignUp />} />
-                    <Route path="/payment" element={<Strapi />} />
+                    <Route path="/cancel" element={<Cancel />} />
                 </Routes>
             </div>
         </AppContext.Provider>

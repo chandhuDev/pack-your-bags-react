@@ -1,13 +1,12 @@
 import React from 'react'
 import logo from '../assests/logo.jpg'
-import {Link, useNavigate} from 'react-router-dom'
-
+import {Navigate} from '../Utils/Images'
 
 const Navbar = () => {
-  const navigate = useNavigate()
-  const JWT=localStorage.getItem('JWT')
-   //("JWT",JWT)
-  function loginFunction(){
+const JWT=localStorage.getItem('JWT')
+const navigate=Navigate()
+
+function loginFunction(){
     navigate('/sign-in')
   }
 

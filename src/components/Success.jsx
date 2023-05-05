@@ -1,23 +1,36 @@
 import React,{useEffect} from 'react'
-import  '../css/Success.css'
-import { useNavigate } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 import { useInView } from 'react-intersection-observer';
+import { useParams,useLocation } from 'react-router-dom';
+import  '../css/Success.css'
+import { updatePlace } from '../lib';
+import { Navigate } from '../Utils/Images';
 const Success = () => {
-  const navigate=useNavigate();
+  const {id}=useParams()
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search)
+  const seats = queryParams.get('seats');
   const { ref: magicSectionRef, inView: magicSectionIsVisible } = useInView();
+  const navigate=Navigate()
   // const successMessageProps = useSpring({
   //       from: { opacity: 0, transform: 'translateY(-50%)' },
   //       to: { opacity: 1, transform: 'translateY(0%)' },
   //       config: { duration: 500 },
   // });
- 
 
-// useEffect(()=>{
-// setInterval(()=>{
-//   navigate("/product")
-// },[8000])
-// },[])
+  async function updateData(){
+   const data=await updatePlace(id,seats)
+   console.log(data)
+    return 
+  }
+
+useEffect(()=>{
+  updateData()
+ setInterval(()=>{
+  navigate("/product")
+},[8000])
+
+},[])
 
 
 return (

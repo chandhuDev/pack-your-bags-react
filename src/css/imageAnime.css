@@ -11,10 +11,17 @@
 }
 
 .special-class{
-    -webkit-background-clip: text;
+   -webkit-background-clip: text;
    -moz-background-clip: text;
-   background-clip: text;
-   color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.wrapper{
+box-sizing: content-box;
+height: 40px;
+padding: 50px 20px;
+margin-left: 5rem;
 }
 
 
@@ -22,6 +29,41 @@
     text-transform: none;
     display: block;
 }
+
+
+.words{
+    overflow: hidden;
+}
+
+.roll{
+    display: block;
+    padding-left: 10px;
+    color: #0e6ffc;
+    height: 100%;
+    animation: roll-animate 3s infinite linear;
+    text-transform: uppercase;
+}
+
+
+@keyframes roll-animate {
+    0%{
+        transform: translateY(20%);
+    }
+    25%{
+        transform: translateY(-20%);
+    }
+    50%{
+        transform: translateY(-60%);
+    }
+    75%{
+        transform: translateY(-90%);
+    }
+    100%{
+        transform: translateY(-100%);
+    }
+
+}
+
 
 
 @keyframes morph{

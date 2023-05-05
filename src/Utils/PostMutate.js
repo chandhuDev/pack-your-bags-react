@@ -20,7 +20,7 @@ export default async function PostMutate(){
             id:product.id
         }
     })
-  
+     
     return mutatedData
 }
  

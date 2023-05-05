@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import {ImCancelCircle} from 'react-icons/im'
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from '../Utils/Images';
+
+
 
 const ModalCart = ({closeModal,productId,totalSeats}) => {
 const [value, setValue] = useState('');
-const navigate=useNavigate()
+const navigate=Navigate()
 const JWT=localStorage.getItem('JWT')
 
 function handlePayment(){
@@ -12,25 +14,30 @@ function handlePayment(){
   window.alert("please login before buy")
   navigate('/sign-in')
  }else{
-  if(totalSeats+value>40){
+  if(totalSeats+Number(value)>40){
+    
    window.alert("please select less seats as we are making this trip to only 40 people")
   }
   else{
-    navigate('/payment',{
-      state:{
-        id:productId,
-        seats:value,
-        totalSeats:totalSeats
+    fetch("http://localhost:3010/create-payment-intent", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({  
+        items: { 
+          id:productId,
+          seats:value
+        } 
+      }),
+      }).then((res) =>res.json()).then((res) => {
+       if(res.url){
+        window.location.href=res.url
        }
-     })}
+    })
+   }
   }
 }
-  
-  //console.log('id and seats',productId,value)
 
-
-
-  return (
+return (
     <>
       <div className='w-full h-full z-20 overflow-y-auto absolute top-0 left-0 flex justify-center items-center bg-black/50 ' >
              <div className='h-auto w-3/6 flex flex-col rounded-lg border-2 relative items-center gap-y-5 text-2xl justify-center px-8 py-5 bg-slate-100'>

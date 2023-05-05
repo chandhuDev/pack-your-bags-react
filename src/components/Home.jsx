@@ -1,12 +1,11 @@
 import React from 'react'
-import {useNavigate} from 'react-router-dom'
 import '../css/imageAnime.css'
-import images from '../Utils/Images'
+import images,{Navigate} from '../Utils/Images'
 import backgroundImage from '../assests/background-text.jpg'
 
 
 const Home = () => {
-   const navigate=useNavigate()
+   const navigate=Navigate()
 
 
    function moveToProduct(){
@@ -16,14 +15,20 @@ const Home = () => {
 return (
     <>
     <div className="flex flex-row justify-evenly w-full h-128 mt-20 ">
-     <div className="flex items-start pt-24 relative flex-col w-128  h-full overflow-hidden">
-        <p className='home-text block mx-auto mb-8'>More You see it</p>
+     <div className="flex items-start pt-20 relative flex-col w-128  h-full overflow-hidden">
+        <div className='flex text-4xl font-bold border-red-400 wrapper'>
+         <p>More you </p>
+         <div className='words'>
+            <span className='roll'>see</span>
+            <span className='roll mr-2'>love</span>
+         </div>
+         <p>it</p>
+        </div>
         <div className='w-full h-40 flex justify-center items-center bg-white'>
            <p className='home-text px-1 py-2 special-class text-center uppercase' style={{backgroundImage:`url(${backgroundImage})`}}>Explore the beautiful world around <span className=' span-class'>you!</span></p>
         </div>
-        
         <div className='absolute bottom-12 w-auto h-auto bg-black  rounded-md cursor-pointer ml-32 font-mono text-2xl font-semibold' >
-        <button className='py-3 px-4 bg-indigo-800 text-center rounded-md  hover:duration-300 transition ease-in-out hover:-translate-y-2 hover:-translate-x-2 hover:delay-150 hover:text-teal-100' onClick={moveToProduct}>View Products <span>{'->'}</span></button>
+        <button className='py-3 px-4 bg-indigo-800 text-center rounded-md  hover:duration-300 transition ease-in-out hover:-translate-y-2 hover:-translate-x-2 hover:delay-150 hover:text-teal-100' onClick={moveToProduct}>View Products {'->'}</button>
         </div>
      </div>
      <div className="grow h-full relative ">

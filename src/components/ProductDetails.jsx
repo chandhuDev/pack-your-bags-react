@@ -34,7 +34,7 @@ return (
     <>
     <div className='w-full h-full my-24 flex justify-center items-center '>
     {
-      openModal && <ModalCart closeModal={SetOpenModal} productId={product.id} totalSeats={product.seat}/>
+      openModal && <ModalCart closeModal={SetOpenModal} productId={product.id} totalSeats={Number(product.seat)}/>
     }     
     
       <div className='h-full w-2/3 mx-auto  text-2xl bg-white '>
@@ -70,7 +70,7 @@ return (
            </div>
           <div className='w-full h-max mt-8 py-5 mx-auto flex gap-x-2 shadow-lg items-start justify-evenly text-2xl font-bold text-center border-r-2 rounded-lg  '>
            <h4>Cost : {product.cost}</h4>
-           <h5>hurry Up! {product.seat} seats left</h5>
+           <h5>hurry Up! {40-Number(product.seat)} seats left</h5>
            <h4>{getNumberOfDays(product.startDate,product.endDate)} days trip</h4>
            </div>
           <div className='flex items-center justify-center'>

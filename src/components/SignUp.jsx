@@ -1,14 +1,14 @@
 import React,{useState} from 'react'
 import InputFormat from '../Utils/InputFormat'
 import logo from '../assests/logo.png'
-import {Link,useNavigate} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { signUpUser } from '../lib';
-import axios from 'axios';
+import { Navigate } from '../Utils/Images';
 const SignUp = () => {
    const [email,setEmail]=useState('')
    const [password,setPassword]=useState('')
    const [firstName,setFirstName]=useState('')
-   const navigate=useNavigate()
+   const navigate=Navigate()
 
    function handleSubmit(e){
     e.preventDefault()
