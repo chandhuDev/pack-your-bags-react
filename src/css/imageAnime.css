@@ -4,12 +4,6 @@
     animation: morph 8s ease-in-out infinite;
 }
 
-.home-text{
-    font-size: 36px;
-    font-weight: 700;
-    
-}
-
 .special-class{
    -webkit-background-clip: text;
    -moz-background-clip: text;
@@ -21,7 +15,6 @@
 box-sizing: content-box;
 height: 40px;
 padding: 50px 20px;
-margin-left: 5rem;
 }
 
 
@@ -37,7 +30,6 @@ margin-left: 5rem;
 
 .roll{
     display: block;
-    padding-left: 10px;
     color: #0e6ffc;
     height: 100%;
     animation: roll-animate 3s infinite linear;

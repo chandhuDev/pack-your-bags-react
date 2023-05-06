@@ -2,6 +2,7 @@ import { getAllProducts } from '../lib'
 export default async function PostMutate(){
     const productsData = await getAllProducts()
     const products=await productsData
+    console.log("how many times we are getting the data")
     const mutatedData=products?.data?.map(product=>{
         return {
             Destination:product.attributes.Destination,

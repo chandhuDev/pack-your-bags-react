@@ -40,10 +40,10 @@ function handlePayment(){
 return (
     <>
       <div className='w-full h-full z-20 overflow-y-auto absolute top-0 left-0 flex justify-center items-center bg-black/50 ' >
-             <div className='h-auto w-3/6 flex flex-col rounded-lg border-2 relative items-center gap-y-5 text-2xl justify-center px-8 py-5 bg-slate-100'>
-                <h5 className='block text-center text-4xl font-semibold'>Buy Tickets</h5>
-                 <div className='my-8'> 
-                    <label className="block text-gray-700 font-medium" htmlFor="inputText">
+             <div className='h-auto md:w-3/6 w-2/3 flex flex-col rounded-lg border-2 relative items-center gap-y-5 justify-center px-8 py-5 bg-slate-100'>
+                <h5 className='block text-center md:text-4xl text-3xl font-semibold'>Buy Tickets</h5>
+                 <div className='md:my-8 my-3'> 
+                    <label className="block text-gray-700 font-medium text-lg mb-5" htmlFor="inputText">
                    Enter Number of Tickets
                   </label>
                   <input
@@ -56,7 +56,7 @@ return (
                   />
                   </div>
                   <button className={`flex items-center p-4 rounded-lg border-2 transition shadow-lg ease-in delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300`}   onClick={handlePayment}>Buy now</button>
-                  <div className='absolute top-5 right-5 cursor-pointer hover:scale-150 duration-200 transition ease-linear' onClick={()=>{closeModal(false)}}>
+                  <div className='absolute top-5 md:right-5 right-2 cursor-pointer hover:scale-150 duration-200 transition ease-linear' onClick={()=>{closeModal(false)}}>
                     <ImCancelCircle className='w-8 h-8 '/>
                   </div>
                </div>

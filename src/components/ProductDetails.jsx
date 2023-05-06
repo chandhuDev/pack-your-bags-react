@@ -32,13 +32,13 @@ return (Math.floor(diffInDays))
 
 return (
     <>
-    <div className='w-full h-full my-24 flex justify-center items-center '>
+    <div className='w-full h-full md:my-24 my-10 flex justify-center items-center '>
     {
       openModal && <ModalCart closeModal={SetOpenModal} productId={product.id} totalSeats={Number(product.seat)}/>
     }     
     
-      <div className='h-full w-2/3 mx-auto  text-2xl bg-white '>
-          <div className='flex flex-row p-2 justify-evenly mx-auto my-6 items-center bg-pink-100'>
+      <div className='h-full md:w-2/3 md:mx-auto w-full mx-10  text-2xl bg-white '>
+          <div className='flex flex-row p-2 justify-evenly md:mx-auto mx-6 md:my-6 my-3 items-center bg-pink-100'>
              <h4 className=' font-serif text-center text-blue-900 py-6'>Source : {product.source}</h4>
              <h4 className=' font-serif text-center text-blue-900 py-6'>Destination : {product.Destination}</h4>
           </div>
@@ -68,7 +68,7 @@ return (
            />
            </div>
            </div>
-          <div className='w-full h-max mt-8 py-5 mx-auto flex gap-x-2 shadow-lg items-start justify-evenly text-2xl font-bold text-center border-r-2 rounded-lg  '>
+          <div className='w-full h-max mt-8 py-5 mx-auto flex md:gap-x-2 gap-x-1 shadow-lg items-start justify-evenly md:text-2xl text-base font-bold text-center border-r-2 rounded-lg  '>
            <h4>Cost : {product.cost}</h4>
            <h5>hurry Up! {40-Number(product.seat)} seats left</h5>
            <h4>{getNumberOfDays(product.startDate,product.endDate)} days trip</h4>
@@ -76,22 +76,22 @@ return (
           <div className='flex items-center justify-center'>
           <button className='px-4  py-2 mt-5 text-center rounded-md border-2 transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 ' onClick={()=>SetOpenModal(!openModal)}>Purchase</button>
           </div>
-          <div className='w-full h-max px-5 py-5  bg-white'>
-            <h5 className='text-3xl text-center uppercase font-mono font-semibold'>Places</h5>
-            <div className=' p-6 my-5  relative cursor-pointer '>
-            <div className=' rounded-xl   group relative overflow-hidden duration-500' >
+          <div className='w-full h-max md:p-5 p-2  bg-white'>
+            <h5 className='md:text-3xl text-xl text-center uppercase font-mono font-semibold'>Places</h5>
+            <div className='md:p-6 my-5 p-4  relative cursor-pointer '>
+            <div className=' rounded-xl group relative overflow-hidden duration-500' >
                    <div
                    style={{backgroundImage:`url(${product.imageArray[index].imageUrl})`}} 
                    className='w-full h-128 rounded-2xl  bg-cover bg-center '>
                    </div>
-                   <div className='px-4 py-2 my-5    -bottom-56   absolute group-hover:-translate-y-56 group-hover:duration-500  text-gray-50  font-bold text-2xl'>
+                   <div className='md:px-4 md:py-2 px-2 py-1 md:my-5 my-2  md:-bottom-56 bottom-0  absolute group-hover:-translate-y-56 group-hover:duration-500  text-gray-50  font-bold md:text-2xl text-lg'>
                    {product.imageArray[index].Description}
                    </div>
                 </div>
-                <div className='block absolute top-[50%] -translate-x-10 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
+                <div className='block absolute top-[50%] -translate-x-10 translate-y-[-50%] md:left-5 left-10 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
                     <BsChevronCompactLeft size={30} onClick={prevSlide}/>
                 </div>
-                <div className='block absolute top-[50%] translate-x-10 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
+                <div className='block absolute top-[50%] translate-x-10 translate-y-[-50%] md:right-5 right-10 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
                     <BsChevronCompactRight size={30} onClick={nextSlide}/>
                 </div>
               <div>

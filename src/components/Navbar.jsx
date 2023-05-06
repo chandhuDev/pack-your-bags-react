@@ -22,8 +22,8 @@ function loginFunction(){
          <div className="flex  items-center flex-auto gap-16">
             <img src={logo} alt="image" className="h-10 object-cover ml-10"/>
          </div>
-         {JWT ? <button className="flex flex-start rounded-lg border-slate-500 ring-1 ring-offset-2 px-8 py-1  mr-12  text-[12] " onClick={logoutFunction}>Logout</button> :
-         <button className="flex flex-start rounded-lg border-slate-500  px-8 py-1  mr-12  text-[12] transition shadow-lg ease-in delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300" onClick={loginFunction}>Login</button>
+         {JWT ? <button className="flex flex-start rounded-md md:rounded-lg border-slate-500 ring-1 ring-offset-1 md:ring-offset-2 md:px-8 px-3 py-1  md:mr-12 mr-5  text-[12] " onClick={logoutFunction}>Logout</button> :
+         <button className="flex flex-start rounded-md md:rounded-lg border-slate-500 md:px-8 px-3 ring-1 ring-offset-1 md:ring-offset-2 mr-12  text-[12] transition shadow-lg ease-in delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300" onClick={loginFunction}>Login</button>
          }
      </nav>
    </header>
