@@ -10,6 +10,7 @@ const Success = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search)
   const seats = queryParams.get('seats');
+  const availableSeats=queryParams.get('available')
   const { ref: magicSectionRef, inView: magicSectionIsVisible } = useInView();
   const navigate=Navigate()
   // const successMessageProps = useSpring({
@@ -19,8 +20,21 @@ const Success = () => {
   // });
 
   async function updateData(){
-   const data=await updatePlace(id,seats)
-   console.log(data)
+
+    const data={
+      data:{
+        seat:Number(seats)+Number(availableSeats)
+      }
+    }
+    const formData=new FormData()
+    formData.append("data",JSON.stringify(data))
+    fetch(`http://localhost:1337/api/places/${id}`,{
+      method:"PUT",
+      body:formData
+    }).then(res=>res.json()).then(res=>{
+    console.log(res)
+    })
+   
     return 
   }
 
@@ -28,7 +42,7 @@ useEffect(()=>{
   updateData()
  setInterval(()=>{
   navigate("/product")
-},[8000])
+},[4000])
 
 },[])
 
