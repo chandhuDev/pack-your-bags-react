@@ -6,12 +6,18 @@ import PostMutate from './Utils/PostMutate'
 
 function App() {
     const [product,setProduct]=useState()
-    const userExists=localStorage.getItem('JWT')
+    
 
     useEffect(()=>{
+        let isAssigned=true
         async function getData(){
             const data=await PostMutate()
-           setProduct(data)
+            if(isAssigned){
+                setProduct(data)
+            }
+           return ()=>{
+            isAssigned=false
+          }
         }
         getData()
     },[])

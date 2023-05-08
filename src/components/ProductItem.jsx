@@ -7,8 +7,6 @@ import { ImageCorousel ,Spinner} from './index'
 const ProductItem = () => {
   const {product}= useContext(AppContext)
   
-  
-   
 return (
     <>
     <div className='w-full h-auto md:my-20 my-10 md:p-14'>
@@ -18,8 +16,7 @@ return (
         return (
        <div className='w-full h-auto mx-auto md:p-10 p-3 relative' key={product.id} >
             <Link
-            to={`/productDetails/${product.id}`}
-            state={{productDetails:product}}
+            to={`/productDetails/${product?.id}`}
             >
               <div className='w-full h-[220px] rounded-md  cursor-pointer'>
               <div  className='w-full h-[220px] rounded-md flex flex-row  border-2 cursor-pointer shadow-lg transition ease-linear delay-50    duration-300 hover:scale-110 hover:-translate-x-2'>

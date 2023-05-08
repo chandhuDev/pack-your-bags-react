@@ -5,9 +5,12 @@ const Cancel = () => {
 const navigate=Navigate()
 
 useEffect(()=>{
-  setInterval(()=>{
+  const interval=setInterval(()=>{
   navigate("/product")
-  },4000)
+  },2000)
+  return ()=>{
+    clearInterval(interval)
+  }
 },[])
 
   return (
